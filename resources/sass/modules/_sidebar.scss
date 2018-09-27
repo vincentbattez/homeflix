@@ -1,0 +1,48 @@
+.sidebar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 30px;
+  
+  .affiche {
+    width: 200px;
+    height: 300px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  .list {
+    margin: 0;
+    padding: 0;
+  }
+
+  .item {
+    display: inline-block;
+    text-align: center;
+    
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+  }
+
+  .restant {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .active {
+
+    .affiche {
+      width: 270px;
+      height: 400px;
+      margin-top: -70px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    }
+  
+    .restant {
+      font-size: 20px;
+    }
+  }
+}

@@ -31,6 +31,7 @@
   @exemple: @import url('https://fonts.googleapis.com/css?family=Playfair+Display:700|Roboto:400,700');
   @see:     https://fonts.google.com/
 \*———————————————————————————————————*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 
 /*———————————————————————————————————*\
     $ COMMON
@@ -53,7 +54,8 @@
 /*———————————————————————————————————*\
     $ MODULES
 \*———————————————————————————————————*/
-@import "modules/cards";
+@import "modules/series";
+@import "modules/sidebar";
 
 /*———————————————————————————————————*\
     $ LAYOUTS

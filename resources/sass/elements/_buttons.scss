@@ -1,3 +1,36 @@
 /*———————————————————————————————————*\
     $ BUTTONS
 \*———————————————————————————————————*/
+button, .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 30px 9px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-family: $ff-body;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn {
+    &-primary {
+        background-color: $primary;
+    }
+    
+    &-secondary {
+        border: 2px solid #FFFFFF;
+        background-color: transparent;
+    }
+    
+    + .btn {
+        margin-left: 20px;
+    }
+
+    img {
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+}

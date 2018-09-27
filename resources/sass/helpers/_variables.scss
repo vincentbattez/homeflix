@@ -1,15 +1,15 @@
 /*———————————————————————————————————*\
     $ COLORS
 \*———————————————————————————————————*/
-  $primary   : #3bcf9a !default;
+  $primary   : #D50F0F !default;
   $secondary : #0b0726 !default;
 
 /*———————————————————————————————————*\
     $ FONTS
 \*———————————————————————————————————*/
-  $ff-body:     Helvetica, Roboto, 'Open Sans', Arial, sans-serif; 
+  $ff-body:     'Montserrat', sans-serif; 
     $fz-body:   16px; 
-  $ff-title:    'Times New Roman', Times, serif;
+  $ff-title:    $ff-body;
     $fz-h1:     35px; 
     $fz-h2:     30px;
     $fz-h3:     25px;

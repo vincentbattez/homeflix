@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600);@charset "UTF-8";
 
 /*———————————————————————————————————*\
     $ VARIABLES & MINXINS
@@ -283,12 +283,20 @@
     $ GLOBAL
 \*———————————————————————————————————*/
 
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
 /*———————————————————————————————————*\
     $ TYPOGRAPHY
 \*———————————————————————————————————*/
 
 body {
-  font-family: Helvetica, Roboto, "Open Sans", Arial, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-size: 1rem;
   font-weight: normal;
@@ -311,13 +319,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .h1,
 h1 {
   font-size: 35px;
   font-size: 2.1875rem;
+  font-size: 72px;
 }
 
 .h2,
@@ -357,11 +366,11 @@ h4 {
 \*———————————————————————————————————*/
 
 .bg-primary {
-  background-color: #3bcf9a;
+  background-color: #D50F0F;
 }
 
 .color-primary {
-  color: #3bcf9a;
+  color: #D50F0F;
 }
 
 .bg-secondary {
@@ -370,6 +379,12 @@ h4 {
 
 .color-secondary {
   color: #0b0726;
+}
+
+.pull-right {
+  position: absolute;
+  right: 100px;
+  top: 200px;
 }
 
 /*———————————————————————————————————*\
@@ -447,13 +462,128 @@ h4 {
     $ BUTTONS
 \*———————————————————————————————————*/
 
+button,
+.btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 9px 30px 9px 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background-color: #D50F0F;
+}
+
+.btn-secondary {
+  border: 2px solid #FFFFFF;
+  background-color: transparent;
+}
+
+.btn + .btn {
+  margin-left: 20px;
+}
+
+.btn img {
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
 /*———————————————————————————————————*\
     $ MODULES
 \*———————————————————————————————————*/
 
 /*———————————————————————————————————*\
-    $ CARD
+    $ SERIES
 \*———————————————————————————————————*/
+
+.serie {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.serie__name {
+  color: white;
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 72px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+.serie__episode,
+.serie__saison {
+  color: #D50F0F;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.serie__episode:after {
+  content: '|';
+  margin-right: 20px;
+  margin-left: 25px;
+  display: inline-block;
+}
+
+.sidebar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 30px;
+}
+
+.sidebar .affiche {
+  width: 200px;
+  height: 300px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar .list {
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .item {
+  display: inline-block;
+  text-align: center;
+}
+
+.sidebar .item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.sidebar .restant {
+  margin-top: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+.sidebar .active .affiche {
+  width: 270px;
+  height: 400px;
+  margin-top: -70px;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar .active .restant {
+  font-size: 20px;
+}
 
 /*———————————————————————————————————*\
     $ LAYOUTS

@@ -1,0 +1,33 @@
+/*———————————————————————————————————*\
+    $ SERIES
+\*———————————————————————————————————*/
+
+.serie {
+    text-align: center;
+    margin-bottom: 50px;
+
+    &__name {
+        color: white;
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+        font-size: 72px;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+    }
+
+    &__episode, 
+    &__saison {
+        color: $primary;
+        font-weight: 600;
+        font-size: 24px;
+    }
+
+    &__episode:after {
+        content: '|';
+        margin-right: 20px;
+        margin-left: 25px;
+        display: inline-block;
+    }
+}
