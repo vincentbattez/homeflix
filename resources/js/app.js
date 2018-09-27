@@ -1,22 +1,23 @@
+const series      = document.querySelectorAll('.sidebar .item');
+const seriesTitle = document.querySelectorAll('[data-currentserie]')
+// const allSerieName = Array.from(series).map(item => item.getAttribute('data-serie'));
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+series.forEach((serie) => {
+    serie.addEventListener('click', () => {
+        const serieName           = serie.getAttribute('data-serie');
+        const containerSerieTitle = document.querySelector('[data-currentserie='+ serieName +']')
 
-require('./bootstrap');
+        // Remove all active
+        series.forEach((el)      => el.classList.remove('active'));
+        seriesTitle.forEach((el) => el.classList.remove('active'));
 
-window.Vue = require('vue');
+        // Add "active" to this
+        serie.classList.add('active');
+        containerSerieTitle.classList.add('active');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+        console.log(containerSerieTitle);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
+        // Change wallpaper
+        document.querySelector('body').style.backgroundImage = 'url("series/'+ serieName +'/wallpaper-'+ serieName +'.jpg")';
+    });
 });

@@ -15,4 +15,13 @@
   position: absolute;
   right: 100px;
   top: 200px;
+
+  &:not(.active){
+    display: none;
+
+  }
+}
+
+.text-center {
+ text-align: center;
 }
