@@ -12,9 +12,13 @@
 
         <title>Homeflix</title>
     </head>
-    <body style="background-image: url(series/vikings/wallpaper-vikings.jpg)">
+    <body>
+        <div class="wallpaper">
+            <img class="active" src="{{ asset('series/vikings/wallpaper-vikings.jpg') }}" alt="wallpaper vikings" data-wallpaper="vikings">
+            <img src="{{ asset('series/greys-anatomy/wallpaper-greys-anatomy.jpg') }}" alt="wallpaper greys-anatomy" data-wallpaper="greys-anatomy">
+        </div>
         {{-- Vikings title --}}
-        <div class="pull-right active" data-currentSerie="vikings">
+        <div class="pull-right active" data-title="vikings">
             <div class="serie">
                 <h1 class="serie__name">Vikings</h1>
                 <span class="serie__episode">Épisode 1</span>
@@ -33,7 +37,7 @@
         </div>
 
         {{-- greys-anatomy title --}}
-        <div class="pull-right" data-currentSerie="greys-anatomy">
+        <div class="pull-right" data-title="greys-anatomy">
             <div class="serie">
                 <h1 class="serie__name">Grey's Anatomy</h1>
                 <span class="serie__episode">Épisode 12</span>
