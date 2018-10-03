@@ -79,3 +79,5 @@ composer.phar
 
 public/**
 # End of https://www.gitignore.io/api/git,sass,windows,laravel
+
+.DS_Store
