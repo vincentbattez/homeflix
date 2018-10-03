@@ -19,7 +19,7 @@
   top: 200px;
 
   &:not(.active){
-    transition: all 100ms;
+    transition: all ($t-duration / 2);
     opacity: 0;
   }
 }

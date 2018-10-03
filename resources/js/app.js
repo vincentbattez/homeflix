@@ -19,8 +19,5 @@ series.forEach((serie) => {
         serie.classList.add('active');
         containerSerieTitle.classList.add('active');
         containerSerieWallaper.classList.add('active');
-
-        // Change wallpaper
-        document.querySelector('body').style.backgroundImage = 'url("series/'+ serieName +'/wallpaper-'+ serieName +'.jpg")';
     });
 });
