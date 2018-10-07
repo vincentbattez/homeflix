@@ -12,4 +12,32 @@ class Saison extends Model
         'id_serie'
     ];
     public $timestamps = false;
+
+    /*———————————————————————————————————*\
+                    Serie
+    \*———————————————————————————————————/*
+            @type      [Data]
+            @dataType  {Object}
+    
+            @return    La série de la saison
+
+            @use       Saison::find(1)->serie
+    */
+    public function serie() {
+        return $this->belongsTo('App\Serie', 'id_serie');
+    }
+
+    /*———————————————————————————————————*\
+                Episodes
+    \*———————————————————————————————————/*
+            @type      [Data]
+            @dataType  [{}]
+    
+            @return    Tous les épisodes d'une saison
+
+            @use       Saison::find(1)->episodes
+    */
+    public function episodes() {
+        return $this->hasMany('App\Episode', 'id_saison');
+    }
 }

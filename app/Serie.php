@@ -15,12 +15,25 @@ class Serie extends Model
     ];
     public $timestamps = false;
 
+    /*———————————————————————————————————*\
+                saisons
+    \*———————————————————————————————————/*
+            @type      [Data]
+            @dataType  [{}]
+    
+            @return    Toutes les saison d'une série
+
+            @use       Serie::find(1)->saisons
+    */
+    public function saisons() {
+        return $this->hasMany('App\Saison', 'id_serie');
+    }
 
     /*———————————————————————————————————*\
                 slug
     \*———————————————————————————————————/*
             @type      [Attribute]
-            @dataType  {Object}
+            @dataType  String
     
             @return    Formate et effectue des calculs sur les dates
     */

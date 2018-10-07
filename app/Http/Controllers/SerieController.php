@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Serie;
+use App\Saison;
+use App\Episode;
 
 class SerieController extends Controller
 {
