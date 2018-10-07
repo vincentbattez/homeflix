@@ -19,6 +19,13 @@
     </main>
     
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <section id="video">
+      <video controls="false">
+          <source type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+    </section>
 </body>
 
 </html>

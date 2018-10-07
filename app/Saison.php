@@ -40,4 +40,15 @@ class Saison extends Model
     public function episodes() {
         return $this->hasMany('App\Episode', 'id_saison');
     }
+
+    /*———————————————————————————————————*\
+                    currentSaison
+    \*———————————————————————————————————/*
+            @type      [Query]
+    
+            @return    La saison actuel
+    */
+    public function scopeCurrentSaison($query) {
+        return $query->where('current', 1);
+    }
 }

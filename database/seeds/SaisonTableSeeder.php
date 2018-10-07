@@ -12,9 +12,16 @@ class SaisonTableSeeder extends Seeder
     public function run()
     {
         for($i = 1; $i < 12; $i++) {
+            $nbCurrentEpisode  = count(App\Saison::where('current', 1)->get());
+
+            $current = ($nbCurrentEpisode < 2) ? rand(0,1) : 0;
+            $viewed  = ($nbCurrentEpisode > 0) ? 1 : 0;
+
             App\Saison::create([
-                'n'        => $i,
                 'id_serie' => App\Serie::all(['id'])->random()->id,
+                'n'        => $i,
+                'current'  => $current,
+                'viewed'   => $viewed,
             ]);
         }
     }

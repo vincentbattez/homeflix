@@ -19,8 +19,12 @@ class HfEpisodes extends Migration
             $table->unsignedInteger('id_saison')->index();
             $table->foreign('id_saison')->references('id')->on('hf_saisons')->onDelete('cascade');
 
+            $table->unsignedInteger('id_serie')->index();
+            $table->foreign('id_serie')->references('id')->on('hf_series')->onDelete('cascade');
+
             $table->integer('n');
             $table->boolean('current');
+            $table->boolean('viewed');
         });
     }
 

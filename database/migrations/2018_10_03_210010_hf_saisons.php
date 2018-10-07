@@ -20,6 +20,8 @@ class HfSaisons extends Migration
             $table->foreign('id_serie')->references('id')->on('hf_series')->onDelete('cascade');
 
             $table->integer('n');
+            $table->boolean('current');
+            $table->boolean('viewed');
         });
     }
 

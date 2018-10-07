@@ -10,7 +10,6 @@ series.forEach((serie) => {
         const containerSerieTitle    = document.querySelector('[data-title='+ serieName +']')
         const containerSerieWallaper = document.querySelector('[data-wallpaper='+ serieName +']')
         
-        console.log(containerSerieTitle);
         // Remove all active
         series.forEach(          (el) => el.classList.remove('active'));
         seriesTitle.forEach(     (el) => el.classList.remove('active'));

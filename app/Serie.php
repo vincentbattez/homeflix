@@ -12,6 +12,7 @@ class Serie extends Model
     ];
     protected $appends = [
         'slug',
+        'current',
     ];
     public $timestamps = false;
 
@@ -39,5 +40,35 @@ class Serie extends Model
     */
     public function getSlugAttribute() {
         return str_slug($this->title, '-');   
+    }
+
+    /*———————————————————————————————————*\
+                remaining
+    \*———————————————————————————————————/*
+            @type      [Attribute]
+            @dataType  Integer
+    
+            @return    Nombre d'épisode restant d'une série
+    */
+    public function getRemainingAttribute() {
+        return Episode::where('id_serie', $this->id)->where('viewed', 0)->count();
+    }
+
+    /*———————————————————————————————————*\
+                current
+    \*———————————————————————————————————/*
+            @type      [Attribute]
+            @dataType  {Object}
+    
+            @return    Épisode et saison courrant d'une série
+    */
+    public function getCurrentAttribute() {
+        $currentSaison  = Saison::where('id_serie', $this->id)->where('current', 1)->first()->n;
+        $currentEpisode = Episode::where('id_serie', $this->id)->where('current', 1)->first()->n;
+
+        return (object) [
+            'saison' => $currentSaison,
+            'episode' => $currentEpisode,
+        ];
     }
 }

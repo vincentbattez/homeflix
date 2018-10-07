@@ -14,13 +14,17 @@ class EpisodeTableSeeder extends Seeder
         for($i = 1; $i < 20; $i++) {
             $nbCurrentEpisode  = count(App\Episode::where('current', 1)->get());
             $id_saison         = App\Saison::all(['id'])->random()->id;
+            $id_serie          = App\Serie::all(['id'])->random()->id;
 
             $current = ($nbCurrentEpisode < 2) ? rand(0,1) : 0;
+            $viewed  = ($nbCurrentEpisode > 0) ? 1 : 0;
 
             App\Episode::create([
                 'n'         => $i,
                 'current'   => $current,
-                'id_saison' => $id_saison
+                'viewed'    => $viewed,
+                'id_saison' => $id_saison,
+                'id_serie'  => $id_serie,
             ]);
         }
     }

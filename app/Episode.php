@@ -26,4 +26,16 @@ class Episode extends Model
     public function saison() {
         return $this->belongsTo('App\Saison', 'id_saison');
     }
+
+    /*———————————————————————————————————*\
+                    currentEpisode
+    \*———————————————————————————————————/*
+            @type      [Query]
+    
+            @return    L'épisode actuel
+    */
+    public function scopeCurrentEpisode($query) {
+        return $query->where('current', 1);
+    }
+
 }

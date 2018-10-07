@@ -21,6 +21,7 @@
   &:not(.active){
     transition: all ($t-duration / 2);
     opacity: 0;
+    display: none;
   }
 }
 
@@ -28,6 +29,7 @@
 
   img:not(.active) {
     opacity: 0;
+    display: none;
   }
 
   img {
