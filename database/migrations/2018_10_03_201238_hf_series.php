@@ -16,8 +16,6 @@ class HfSeries extends Migration
         Schema::create('hf_series', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            
-            $table->timestamps();
         });
     }
 

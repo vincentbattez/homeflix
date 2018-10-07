@@ -39,7 +39,7 @@
     // ".env*":         true,
     "artisan":       true,
     "composer*":     true,
-    "package*":      true,
+    "package-lock.json":      true,
     "phpunit.xml":   true,
     "readme.md":     true,
     "server.php":    true,

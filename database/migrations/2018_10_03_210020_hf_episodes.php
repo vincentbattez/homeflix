@@ -15,15 +15,12 @@ class HfEpisodes extends Migration
     {
         Schema::create('hf_episodes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-
-            $table->unsignedInteger('id_serie')->index();
-            $table->foreign('id_serie')->references('id')->on('hf_series')->onDelete('cascade');
 
             $table->unsignedInteger('id_saison')->index();
             $table->foreign('id_saison')->references('id')->on('hf_saisons')->onDelete('cascade');
-            
-            $table->timestamps();
+
+            $table->integer('n');
+            $table->boolean('current');
         });
     }
 

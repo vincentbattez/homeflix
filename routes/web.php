@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*———————————————————————————————————*\
+    $ LANDING PAGE
+\*———————————————————————————————————*/
+Route::get('/','SerieController@index')
+    ->name('serie.index')
+;
