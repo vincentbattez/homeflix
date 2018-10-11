@@ -17,7 +17,8 @@
 ----------------}}
 @section('content')
 <section class="container">
-    <div id="wallpapers">
+    {{-- WALLPAPER --}}
+    <section id="wallpapers">
         @foreach ($series as $index => $serie)
             <div class="wallpaper">
                 <img
@@ -28,44 +29,65 @@
                 />
             </div>
         @endforeach
-    </div>
+    </section>
+
     {{-- SERIES TITLE --}}
-    <div id="series">
+    <section id="series">
         @foreach ($series as $index => $serie)
             <div class="pull-right {{ ($index === 0) ? 'active' : '' }}" data-title="{{ $serie->slug }}">
                 <div class="serie">
                     <h1 class="serie__name">{{ $serie->title }}</h1>
-                    <span class="serie__episode">Épisode {{ $serie->current->episode }}</span>
-                    <span class="serie__saison">Saison {{ $serie->current->saison }}</span>
+                    <span class="serie__episode">Épisode {{ $serie->current->episode->n }}</span>
+                    <span class="serie__saison">Saison {{ $serie->current->saison->n }}</span>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary" onclick="launchEpisode('{{ $serie->slug }}','{{ $serie->current->saison }}','{{ $serie->current->episode }}')">
+                    <button class="btn btn-primary" onclick="launchEpisode('{{ $serie->slug }}','{{ $serie->current->saison->n }}','{{ $serie->current->episode->n }}')">
                         <img src="{{ asset('images/icon-play.svg') }}" alt="play">
                         Regarder
                     </button>
-                    <button class="btn btn-secondary">
+                    <button class="btn btn-secondary" onclick="showEpisode('{{ $serie->slug }}')">
                         <img src="{{ asset('images/icon-change.svg') }}" alt="change">
                         Épisodes
                     </button>
                 </div>
             </div>
         @endforeach
-    </div>
+    </section>
     
+    {{-- LIST OF SERIES --}}
     <nav class="sidebar">
         <ul class="list">
             @foreach ($series as $index => $serie)
-                <li class="item {{ ($index === 0) ? 'active' : '' }}" data-serie="{{ $serie->slug }}">
-                    <img class="affiche" src="{{ asset('series/'. $serie->slug .'/affiche-'. $serie->slug .'.png') }}" alt="{{ $serie->slug }}">
-                    <p class="restant">
-                        @if ($serie->remaining >= 1)
-                            {{ $serie->remaining }} épisodes restant
-                        @endif
-                    </p>
-                </li>
+                <div class="list__container">
+                    <li class="item {{ ($index === 0) ? 'active' : '' }}" data-serie="{{ $serie->slug }}">
+                        <img class="affiche" src="{{ asset('series/'. $serie->slug .'/affiche-'. $serie->slug .'.png') }}" alt="{{ $serie->slug }}">
+                        <p class="restant">
+                            @if ($serie->remaining >= 1)
+                                {{ $serie->remaining }} épisodes restant
+                            @endif
+                        </p>
+                    </li>
+                    {{-- LIST OF EPISODES --}}
+                    <article class="episode" data-episode="{{ $serie->slug }}">
+                        <ol class="episode__list">
+                            @foreach ($serie->current->saison->episodes as $episode)
+                                @php($viewed = ($episode->viewed === 1) ? 'viewed' : '') 
+                                @php($current = ($episode->current === 1) ? 'active' : '') 
+                                <li class="episode__item{{ ' '.$viewed.$current}}"
+                                    data-nSerie="{{ $serie->slug }}" 
+                                    data-nSaison="{{ $serie->current->saison->n }}" 
+                                    data-nEpisode="{{ $serie->current->episode->n }}" 
+                                >
+                                    Episode {{ $episode->n }}
+                                </li>
+                            @endforeach
+                        </ol>
+                    </article>
+                </div>
             @endforeach
         </ul>
     </nav>
+
 </section>
 
 <script>
@@ -124,6 +146,16 @@
 
         // pause
         video.pause();
+    }
+
+    function showEpisode(dataSerie) {
+        const episodeContainer = document.querySelector('[data-episode='+ dataSerie +']');
+        
+        if (!episodeContainer.classList.contains('active')) {
+            episodeContainer.classList.add('active');
+        } else {
+            episodeContainer.classList.remove('active');
+        }
     }
 </script>
 @endsection

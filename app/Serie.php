@@ -63,8 +63,8 @@ class Serie extends Model
             @return    Épisode et saison courrant d'une série
     */
     public function getCurrentAttribute() {
-        $currentSaison  = Saison::where('id_serie', $this->id)->where('current', 1)->first()->n;
-        $currentEpisode = Episode::where('id_serie', $this->id)->where('current', 1)->first()->n;
+        $currentSaison  = Saison::where('id_serie', $this->id)->where('current', 1)->first();
+        $currentEpisode = Episode::where('id_serie', $this->id)->where('current', 1)->first();
 
         return (object) [
             'saison' => $currentSaison,
