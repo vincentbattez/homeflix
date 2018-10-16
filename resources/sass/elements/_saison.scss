@@ -1,0 +1,37 @@
+.saison {
+  display: flex;
+  text-align: center;
+
+  &__prev {
+    
+  } 
+
+  &__next {
+
+  } 
+
+  &__next, &__prev {
+    transition:       200ms all;
+    text-align:       center;
+    width:            100%;
+    border-radius:    0;
+    text-align:       center;
+    display:          block;
+    background-color: rgba(0, 0, 0, .3);
+    
+    &:hover {
+      background-color: transparentize($primary, .5);
+    }
+  }
+
+  form {
+    flex: 1;
+  }
+}
+
+.episode__item.saison__prev,
+.episode__item.saison__next {
+  &:after {
+    display: none;
+  }
+}

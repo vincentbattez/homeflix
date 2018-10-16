@@ -10,8 +10,8 @@ use App\Episode;
 class SerieController extends Controller
 {
     public function index() {
-        // ON RECUREPERE LES INFORMATION DU PROJET
-        $series          = Serie::all();
+        // ON RECUREPERE LES INFORMATION DES SERIES
+        $series = Serie::all();
 
         return view('serie/index', [
             'series' => $series,

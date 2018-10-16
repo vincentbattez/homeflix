@@ -70,16 +70,44 @@
                     {{-- LIST OF EPISODES --}}
                     <article class="episode" data-episode="{{ $serie->slug }}">
                         <ol class="episode__list">
+                            <div class="saison">
+                                @if ($serie->current->saison->n - 1 !== 0)
+                                    <form action="{{ route('saison.changeSaison') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name='idSerie'       value='{{ $serie->id }}'>
+                                        <input type="hidden" name='newSaison'     value='{{ $serie->current->saison->n - 1 }}'>
+                                        <input type="hidden" name='currentSaison' value='{{ $serie->current->saison->n }}'>
+                                        <button class="episode__item saison__prev" type="submit">
+                                            <
+                                        </button>
+                                    </form>
+                                @endif
+
+                                @if ($serie->saisons->where('n', $serie->current->saison->n + 1)->count() !== 0)
+                                    <form action="{{ route('saison.changeSaison') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" name='idSerie'       value='{{ $serie->id }}'>
+                                        <input type="hidden" name='newSaison'     value='{{ $serie->current->saison->n + 1 }}'>
+                                        <input type="hidden" name='currentSaison' value='{{ $serie->current->saison->n }}'>
+                                        <button class="episode__item saison__prev" type="submit">
+                                            >
+                                        </button>
+                                    </form>
+                                @endif
+                            </div>
                             @foreach ($serie->current->saison->episodes as $episode)
-                                @php($viewed = ($episode->viewed === 1) ? 'viewed' : '') 
-                                @php($current = ($episode->current === 1) ? 'active' : '') 
-                                <li class="episode__item{{ ' '.$viewed.$current}}"
-                                    data-nSerie="{{ $serie->slug }}" 
-                                    data-nSaison="{{ $serie->current->saison->n }}" 
-                                    data-nEpisode="{{ $serie->current->episode->n }}" 
-                                >
-                                    Episode {{ $episode->n }}
-                                </li>
+                                @php($viewed = ($episode->viewed === 1) ? ' viewed' : '') 
+                                @php($current = ($episode->current === 1) ? ' active' : '') 
+                                <form action="{{ route('episode.changeEpisode') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name='idSerie'        value='{{ $serie->id }}'>
+                                    <input type="hidden" name='newEpisode'     value='{{ $episode->n }}'>
+                                    <input type="hidden" name='currentEpisode' value='{{ $serie->current->episode->n }}'>
+                                    <input type="hidden" name='idSaison'       value='{{ $serie->current->saison->id }}'>
+                                    <button class="episode-js episode__item{{ $viewed.$current }}" type="submit">
+                                        Episode {{ $episode->n }}
+                                    </button>
+                                </form>
                             @endforeach
                         </ol>
                     </article>

@@ -29,8 +29,9 @@ series.forEach((serie) => {
 
 
 
-const episodes = document.querySelectorAll('.episode__item');
+const episodes = document.querySelectorAll('.episode-js');
 
+// Change episode
 episodes.forEach((episode) => {
     episode.addEventListener('click', () => {
         if(!episode.classList.contains('active')) {
@@ -44,7 +45,7 @@ episodes.forEach((episode) => {
             // Add "active" to this
             episode.classList.add('active');
             
-            launchEpisode(Eserie, Esaison, Eepisode);
+            // launchEpisode(Eserie, Esaison, Eepisode);
         }
     });
 });

@@ -17,3 +17,13 @@
 Route::get('/','SerieController@index')
     ->name('serie.index')
 ;
+
+/*———————————————————————————————————*\
+    $ Changes
+\*———————————————————————————————————*/
+Route::post('/saison/change','SaisonController@changeSaison')
+    ->name('saison.changeSaison')
+;
+Route::post('/episode/change','EpisodeController@changeEpisode')
+    ->name('episode.changeEpisode')
+;

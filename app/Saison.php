@@ -8,8 +8,10 @@ class Saison extends Model
 {
     protected $table = 'hf_saisons';
     protected $fillable = [
+        'id_serie',
         'n',
-        'id_serie'
+        'current',
+        'viewed'
     ];
     public $timestamps = false;
 

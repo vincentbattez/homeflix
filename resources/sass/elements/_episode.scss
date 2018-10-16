@@ -17,14 +17,21 @@
   }
 
   &__item {
-    white-space: nowrap;
-    position: relative;
-    padding: 15px 20px;
-    color:   white;
-    cursor:  pointer;
+    width:            100%;
+    display:          block;
+    position:         relative;
+    padding:          15px 20px;
+    border-radius:    0px;
+    font-size:        18px;
+    font-weight:      400;
+    color:            white;
+    text-transform:   none;
+    white-space:      nowrap;
+    cursor:           pointer;
+    background-color: transparent;
 
     &.active {
-      background-color: rgba(244, 67, 54, 0.3);
+      background-color: rgba(244, 67, 54, 0.3) !important;
       cursor:           default;
     }
 

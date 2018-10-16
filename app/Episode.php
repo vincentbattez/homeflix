@@ -8,8 +8,11 @@ class Episode extends Model
 {
     protected $table = 'hf_episodes';
     protected $fillable = [
-        'n',
         'id_saison',
+        'id_serie',
+        'n',
+        'current',
+        'viewed',
     ];
     public $timestamps = false;
 
