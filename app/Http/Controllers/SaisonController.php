@@ -12,10 +12,11 @@ class SaisonController extends Controller
     public function changeSaison(Request $request) {
         $newSaison      = $request->input('newSaison');
         $idSerie        = $request->input('idSerie');
-        $nCurrentSaison = $request->input('currentSaison');
+        $currentSaison  = $request->input('currentSaison');
+        $nCurrentEpisode = $request->input('currentEpisode');
         
         $currentSaison = Saison::
-              where('n', $nCurrentSaison)
+              where('n', $currentSaison)
             ->where('id_serie', $idSerie)
             ->first();
 
@@ -24,15 +25,34 @@ class SaisonController extends Controller
             ->where('id_serie', $idSerie)
             ->first();
 
+        $firstEpisodeNewSaison = Episode::
+              where('n', 1)
+            ->where('id_saison', $newSaison->id)
+            ->where('id_serie', $idSerie)
+            ->first();
+
+        $currentEpisode = Episode::
+            where('n', $nCurrentEpisode)
+            ->where('id_serie', $idSerie)
+            ->where('id_saison', $currentSaison->id)
+            ->first();
+
         if($newSaison === null) {
             dd('pas de saison suivante');
         }else {
-            // dd($currentSaison);
-            $currentSaison->current = 0;
-            $newSaison->current     = 1;
+            // saisons
+            $currentSaison ->current = 0;
+            $newSaison     ->current = 1;
+
+            // episodes
+            $currentEpisode       ->current = 0;
+            $firstEpisodeNewSaison->current = 1;
+            
 
             $currentSaison->save();
             $newSaison->save();
+            $currentEpisode->save();
+            $firstEpisodeNewSaison->save();
 
             return redirect()->back();
         }
